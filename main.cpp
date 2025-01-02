@@ -71,7 +71,7 @@ int main() {
 
     int choice;
     string userName, option;
-    int userDeposit;
+    int userDeposit, newAmount;
     string userAccNumEntry;
 
     do
@@ -80,8 +80,6 @@ int main() {
 
     cout<<"Enter your choice ";
     cin>>choice;
-
-    
 
     switch (choice)
     {   
@@ -111,13 +109,30 @@ int main() {
                 cout<<"Name: "<<details.getAccountHolder()<<" || Balance: "<<details.getBalance()
                 <<" accountnum: "<<details.getAccountNumber()<<endl;
             }
+        }break;
+    }
+    case 3:{
+        cout<<""<<endl;
+        cout<<"================****============"<<endl;
+
+        cout<<"Enter the amount ==> ";
+        cin>>newAmount;
+
+        cout<<"Enter your account number ==> ";
+        cin>>userAccNumEntry;
+
+        cout<<""<<endl;
+        for (auto& details : userDetails){
+            if(details.getAccountNumber() == userAccNumEntry){
+                int newbalance  = details.getBalance() + newAmount;
+                
+                details.setBalance(newbalance);
+                cout<<"newbala: "<<details.getBalance()<<endl;
+
+            }
 
         }break;
     }
-    // case 3:
-        
-    //     break;
-
     // case 4:
         
     //     break;
@@ -139,10 +154,6 @@ int main() {
 
    } while (option=="y" || option =="Y");
     
-
-    
-
-   
 
     return 0;
 }
