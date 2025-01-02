@@ -9,14 +9,14 @@ class Bank{
 private:
     int deposit;
     string name;
-    string accountNumber = "1001" + to_string(rand()% 9000 + 10000);;
+    string accountNumber ;
 
 
 public:
     Bank(string accountHolder, int amount ){
         name = accountHolder;
         deposit = amount;
-        accountNumber =  accountNumber;
+        accountNumber = "1001" + to_string(rand()% 9000 + 10000);
     }
 
     string getAccountHolder(){
@@ -45,6 +45,10 @@ public:
         cout<<"Account number : "<<accountNumber<<endl;
     }
 
+    void fetchAcc_Details(){
+
+    }
+
     
 
 };
@@ -65,14 +69,11 @@ int main() {
 
     vector<Bank> userDetails;
 
-
     int choice;
     string userName, option;
     int userDeposit;
+    string userAccNumEntry;
 
-    
-
-    
     do
     {
     display();
@@ -80,29 +81,39 @@ int main() {
     cout<<"Enter your choice ";
     cin>>choice;
 
-    cout<<"Enter new User name : "<<endl;
-	cin>>userName;
-	cout<<"Enter initial amount: "<<endl;
-	cin>>userDeposit;
-
-
-
-    Bank newUser(userName, userDeposit);
-   
-    userDetails.push_back(newUser);
     
 
-     switch (choice)
-    {
-    case 1:
-        for (auto details : userDetails) 
-        details.display();
-        break;
+    switch (choice)
+    {   
+    case 1:{
+        cout<<"Enter new User name : "<<endl;
+        cin>>userName;
+        cout<<"Enter initial amount: "<<endl;
+        cin>>userDeposit;
+        cout<<">>***===***===***==***<<"<<endl;
 
-    // case 2:
-        
-    //     break;
+        Bank newUser(userName, userDeposit);
+        userDetails.push_back(newUser);
 
+        for (auto details : userDetails){ 
+            details.display();
+        }break;
+    }
+    case 2:{
+        cout<<">>***===***===***==***<<"<<endl;
+
+        cout<<"Enter your account number ==> ";
+        cin>>userAccNumEntry;
+
+        cout<<">>***===***===***==***<<"<<endl;
+        for (auto details : userDetails){
+            if(details.getAccountNumber() == userAccNumEntry){
+                cout<<"Name: "<<details.getAccountHolder()<<" || Balance: "<<details.getBalance()
+                <<" accountnum: "<<details.getAccountNumber()<<endl;
+            }
+
+        }break;
+    }
     // case 3:
         
     //     break;
