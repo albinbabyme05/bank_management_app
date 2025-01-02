@@ -71,7 +71,7 @@ int main() {
 
     int choice;
     string userName, option;
-    int userDeposit, newAmount;
+    int userDeposit, newAmount, withDrawAmount;
     string userAccNumEntry;
 
     do
@@ -127,16 +127,42 @@ int main() {
                 int newbalance  = details.getBalance() + newAmount;
                 
                 details.setBalance(newbalance);
-                cout<<"newbala: "<<details.getBalance()<<endl;
+                cout<<"Current Balance : "<<details.getBalance()<<endl;
 
             }
 
         }break;
     }
-    // case 4:
-        
-    //     break;
+    case 4:{
 
+        cout<<""<<endl;
+        cout<<"Enter the amount ==> ";
+        cin>>withDrawAmount;
+
+        cout<<"Enter your account number ==> ";
+        cin>>userAccNumEntry;
+
+        for (auto& details : userDetails){
+            if(details.getAccountNumber() == userAccNumEntry){
+                if(details.getBalance() > withDrawAmount){
+                    int withdrawed  = details.getBalance() - withDrawAmount;
+                    details.setBalance(withdrawed);
+                    cout<<"Current Balance : "<<details.getBalance()<<endl;
+                }else{
+                    cout<<"Sorry, Your balance is: "<<details.getBalance()<<" Try again with another amount!!!"<<endl;
+                }
+                
+
+            }else{
+                cout<<"Sorry, Account Number is inccorect !!!"<<endl;
+            }
+
+        }break;
+        
+
+        
+        break;
+}
     // case 5:
         
     //     break;
